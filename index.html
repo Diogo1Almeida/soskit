@@ -1,0 +1,879 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOS Estágio Fisio</title>
+<link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-1:#0c2b34;
+    --navy-2:#123c46;
+    --navy-deep:#081e25;
+    --on-dark:#f4f8f7;
+    --on-dark-muted:#a9c3c1;
+    --bg:#ffffff;
+    --bg-alt:#f1f6f6;
+    --cream:#fbf3e6;
+    --cream-border:#ecdfc7;
+    --text:#12201f;
+    --text-muted:#5b6b69;
+    --border:#e3e8e7;
+    --accent:#1fb473;
+    --accent-strong:#128257;
+    --accent-soft:#e0f7ec;
+    --coral:#ff6b52;
+    --coral-soft:#ffe3dc;
+    --star:#f4b73f;
+    --shadow:0 10px 28px rgba(10,30,28,.08);
+    --shadow-dark:0 20px 44px rgba(0,0,0,.35);
+    --tag1-bg:#e0f7ec; --tag1-fg:#128257;
+    --tag2-bg:#dff1f4; --tag2-fg:#0f6e7a;
+    --tag3-bg:#ffe3dc; --tag3-fg:#c94a2e;
+    --tag4-bg:#fdf0d2; --tag4-fg:#a8710a;
+    --tag5-bg:#ece3fb; --tag5-fg:#6a3fc9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Public Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:"Archivo","Public Sans",sans-serif;
+    font-weight:800;
+    line-height:1.14;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0;}
+  img,svg{max-width:100%; min-width:0;}
+  a{color:inherit;}
+  .container{max-width:1120px; margin:0 auto; padding-inline:20px;}
+  section{padding-block:clamp(44px,7vw,84px);}
+  .sec-dark{background:linear-gradient(175deg,var(--navy-1),var(--navy-2)); color:var(--on-dark);}
+  .sec-alt{background:var(--bg-alt);}
+  .sec-cream{background:var(--cream);}
+  .muted{color:var(--text-muted);}
+  .sec-dark .muted{color:var(--on-dark-muted);}
+  .narrow{max-width:720px; margin:0 auto;}
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent-strong); background:var(--accent-soft); padding:7px 14px; border-radius:999px;
+  }
+  .eyebrow-dark{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:#fff; background:rgba(255,255,255,.12); padding:7px 14px; border-radius:999px;
+  }
+  .section-head{max-width:680px; margin:0 auto 36px; text-align:center; display:flex; flex-direction:column; gap:12px; align-items:center;}
+  .section-head h2{font-size:clamp(24px,4vw,34px);}
+  .section-head p{color:var(--text-muted); font-size:16px;}
+  .sec-dark .section-head p{color:var(--on-dark-muted);}
+  .body-copy{display:flex; flex-direction:column; gap:16px; font-size:16px; color:var(--text-muted); max-width:680px; margin:0 auto;}
+  .body-copy strong{color:var(--text); font-weight:700;}
+  .sec-dark .body-copy strong{color:#fff;}
+  .body-copy .lead{color:var(--text); font-size:18px; font-weight:600;}
+  .sec-dark .body-copy .lead{color:#fff;}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--accent); color:#fff;
+    font-family:"Public Sans",sans-serif; font-weight:700; font-size:15.5px;
+    padding:15px 26px; border-radius:11px; border:none; cursor:pointer;
+    text-decoration:none; text-align:center;
+    box-shadow:0 12px 26px -8px rgba(18,130,87,.55);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{background:var(--accent-strong); transform:translateY(-1px);}
+  .btn-outline{background:transparent; color:var(--text); border:1.5px solid var(--border); box-shadow:none;}
+  .btn-outline:hover{background:var(--bg-alt); border-color:var(--text-muted);}
+  .btn-block{width:100%;}
+  .microcopy{font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:6px; justify-content:center; flex-wrap:wrap;}
+  .sec-dark .microcopy{color:var(--on-dark-muted);}
+  .badge-strip{font-size:12.5px; font-weight:800; letter-spacing:.06em; color:var(--accent-strong); background:var(--accent-soft); padding:9px 16px; border-radius:10px; text-transform:uppercase;}
+  .badge-strip.on-dark{color:#fff; background:rgba(255,255,255,.12);}
+
+  /* check lists */
+  .check-list{display:flex; flex-direction:column; gap:10px; padding:0; margin:0;}
+  .check-list li{list-style:none; display:flex; gap:10px; align-items:flex-start; font-size:14.5px;}
+  .check-list li::before{
+    content:"✓"; flex:none; width:19px; height:19px; border-radius:50%; font-size:11px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; margin-top:2px;
+    background:var(--accent-soft); color:var(--accent-strong);
+  }
+  .check-list.on-dark li::before{background:rgba(255,255,255,.14); color:#fff;}
+  .check-list.on-dark li{color:var(--on-dark-muted);}
+
+  /* hero */
+  .hero{padding-block:clamp(44px,7vw,72px) clamp(50px,8vw,88px);}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  .hero-copy{display:flex; flex-direction:column; gap:18px; align-items:flex-start; min-width:0;}
+  .hero h1{font-size:clamp(26px,4.2vw,42px); letter-spacing:-.01em; color:#fff;}
+  .hero h1 .hl{color:var(--star);}
+  .hero-sub{font-size:17px; color:var(--on-dark-muted); max-width:54ch;}
+  .hero-sub strong{color:#fff;}
+  .hl{color:var(--star);}
+
+  .hero-highlights{display:flex; flex-direction:column; gap:14px; width:100%; max-width:380px;}
+  .hh-intro{font-size:14.5px; font-weight:700; color:#fff; line-height:1.5; display:flex; gap:8px; align-items:flex-start;}
+  .hh-icon{flex:none; font-size:17px; line-height:1.4;}
+  .hh-list{display:flex; flex-direction:column; gap:9px; padding:0; margin:0;}
+  .hh-list li{list-style:none; font-size:14px; font-weight:700; color:#fff; display:flex; gap:8px; align-items:flex-start; line-height:1.4;}
+
+  .hero-visual{position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; min-height:340px; min-width:0;}
+  .hero-mockup-img{width:100%; max-width:520px; min-width:0; height:auto; aspect-ratio:780/439; border-radius:18px; box-shadow:var(--shadow-dark); display:block;}
+
+  /* thought bubbles */
+  .thought-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:8px 0;}
+  .thought{background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 18px; font-weight:700; font-size:15px; box-shadow:var(--shadow); position:relative;}
+  .thought::before{content:"\201C"; color:var(--accent); font-family:"Archivo",sans-serif; font-size:26px; margin-right:2px; vertical-align:-4px;}
+
+  /* chips */
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
+  .chip{background:#fff; border:1px solid var(--border); border-radius:999px; padding:8px 16px; font-size:14px; font-weight:600; color:var(--text-muted);}
+
+  .callout-strong{font-family:"Archivo",sans-serif; font-weight:900; font-size:clamp(20px,3vw,28px); color:var(--accent-strong); text-align:center; text-wrap:balance;}
+
+  /* flow steps */
+  .flow-steps{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px; margin-top:8px;}
+  .flow-step{background:#fff; border:1px solid var(--border); border-radius:12px; padding:12px 18px; font-weight:700; font-size:14.5px; box-shadow:var(--shadow);}
+  .flow-arrow{color:var(--accent-strong); font-weight:800; font-size:16px;}
+
+  /* preview carousels (infinite marquee) */
+  .marquee-wrap{display:flex; flex-direction:column; gap:18px;}
+  .marquee{
+    overflow:hidden; width:100%;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .marquee-track{display:flex; gap:16px; width:max-content; animation:marquee-left 34s linear infinite;}
+  .marquee-track.reverse{animation-name:marquee-right;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marquee-left{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  @keyframes marquee-right{from{transform:translateX(-50%);} to{transform:translateX(0);}}
+  .marquee-card{flex:none; width:300px; aspect-ratio:640/453; background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow);}
+  .marquee-card img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media (prefers-reduced-motion:reduce){
+    .marquee-track{animation:none;}
+  }
+
+  /* module grid */
+  .module-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  .module-card{background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px; box-shadow:var(--shadow);}
+  .module-top{display:flex; align-items:center; gap:12px;}
+  .module-icon{width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:21px; flex:none;}
+  .module-card h3{font-size:16.5px;}
+  .module-tag{font-size:11px; font-weight:800; letter-spacing:.05em; padding:4px 10px; border-radius:999px; align-self:flex-start;}
+  .module-desc{font-size:13.5px; color:var(--text-muted);}
+  .module-more{font-size:13px; color:var(--accent-strong); font-style:italic; font-weight:600;}
+
+  /* benefit detail */
+  .benefit-detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .benefit-detail-card{background:#fff; border:1px solid var(--border); border-radius:14px; padding:20px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow);}
+  .benefit-detail-card .check{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong); flex:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; margin-top:2px;}
+  .benefit-detail-card h4{font-size:15.5px; margin-bottom:6px;}
+  .benefit-detail-card p{font-size:14px; color:var(--text-muted);}
+
+  /* bonus grid */
+  .bonus-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .bonus-card{background:#fff; border:1px solid var(--cream-border); border-radius:16px; padding:22px; display:flex; flex-direction:column; gap:12px; box-shadow:var(--shadow);}
+  .bonus-top{display:flex; align-items:center; gap:12px;}
+  .bonus-icon{width:44px;height:44px;border-radius:12px; background:var(--coral-soft); color:var(--coral); display:flex; align-items:center; justify-content:center; font-size:19px; flex:none;}
+  .bonus-image{width:100%; min-width:0; aspect-ratio:4/3; object-fit:cover; border-radius:12px; display:block;}
+  .bonus-card h4{font-size:15.5px;}
+  .bonus-card p{font-size:13.5px; color:var(--text-muted);}
+  .bonus-price{display:flex; align-items:baseline; gap:10px; margin-top:auto; padding-top:8px; border-top:1px dashed var(--border);}
+  .bonus-price .old{font-size:13px; color:var(--text-muted); text-decoration:line-through; font-variant-numeric:tabular-nums;}
+  .bonus-price .free{font-size:12.5px; font-weight:800; color:var(--accent-strong); background:var(--accent-soft); padding:3px 10px; border-radius:999px;}
+
+  /* value stack */
+  .value-list{display:flex; flex-direction:column; gap:6px; text-align:center; font-size:16px; color:var(--on-dark-muted); margin:8px 0;}
+  .value-list strong{color:#fff;}
+
+  /* testimonials (dark) */
+  .stars{color:var(--star); font-size:14px; letter-spacing:2px;}
+  .testi-carousel-wrap{position:relative; display:flex; align-items:center; gap:10px; max-width:900px; margin:0 auto;}
+  .testi-carousel{
+    display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    padding:6px 4px 12px; scrollbar-width:none; flex:1; scroll-padding-inline:4px;
+  }
+  .testi-carousel::-webkit-scrollbar{display:none;}
+  .testi-slide{flex:none; scroll-snap-align:center; width:min(64vw, 240px);}
+  .testi-slide img{width:100%; height:auto; border-radius:16px; box-shadow:var(--shadow-dark); display:block;}
+  .testi-nav{
+    flex:none; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08); color:#fff; font-size:18px; cursor:pointer; display:flex;
+    align-items:center; justify-content:center; transition:background .15s ease;
+  }
+  .testi-nav:hover{background:rgba(255,255,255,.18);}
+  @media (max-width:600px){ .testi-nav{display:none;} }
+
+  /* pricing - two plans, dark section */
+  .plans-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:920px; margin:40px auto 0; align-items:start;}
+  .plan-card{background:#fff; border-radius:20px; padding:30px; display:flex; flex-direction:column; gap:16px; box-shadow:0 20px 44px rgba(0,0,0,.35); position:relative; color:var(--text);}
+  .plan-card.premium{outline:2px solid var(--accent); box-shadow:0 26px 54px rgba(0,0,0,.45);}
+  .plan-tag{position:absolute; top:-13px; left:26px; background:var(--accent); color:#fff; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:6px 14px; border-radius:999px; display:flex; align-items:center; gap:6px;}
+  .plan-head{display:flex; flex-direction:column; gap:6px;}
+  .plan-head h3{font-size:19px; color:var(--text);}
+  .plan-sub{font-size:12.5px; color:var(--text-muted); font-weight:600;}
+  .price-block{border-top:1px dashed var(--border); padding-top:16px; display:flex; flex-direction:column; gap:4px;}
+  .price-old{font-size:14px; color:var(--text-muted); text-decoration:line-through; font-variant-numeric:tabular-nums;}
+  .price-now{font-size:40px; font-weight:900; font-family:"Archivo",sans-serif; font-variant-numeric:tabular-nums; color:var(--accent-strong);}
+  .price-now small{font-size:16px; font-weight:600; color:var(--text-muted);}
+  .price-desc{font-size:12.5px; color:var(--text-muted);}
+
+  /* objection blocks */
+  .objection-grid{display:flex; flex-direction:column; gap:16px; max-width:760px; margin:0 auto;}
+  .objection-card{background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px 26px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;}
+  .objection-card h3{font-size:17px;}
+  .objection-card p{font-size:14.5px; color:var(--text-muted);}
+
+  /* guarantee */
+  .guarantee{display:flex; align-items:center; gap:28px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:32px; box-shadow:var(--shadow);}
+  .guarantee-badge{flex:none; width:92px; height:92px; border-radius:50%; background:var(--accent-soft); color:var(--accent-strong); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:"Archivo",sans-serif; font-weight:900; text-align:center; line-height:1.1; border:2px dashed var(--accent); font-size:26px;}
+  .guarantee-badge span{font-size:10.5px; letter-spacing:.04em; margin-top:4px;}
+  .guarantee-copy h3{font-size:20px; margin-bottom:8px;}
+  .guarantee-copy p{color:var(--text-muted); font-size:14.5px;}
+
+  /* faq */
+  .faq-list{display:flex; flex-direction:column; gap:12px; max-width:760px; margin:0 auto;}
+  details{background:#fff; border:1px solid var(--border); border-radius:14px; padding:6px 20px;}
+  summary{cursor:pointer; list-style:none; padding:14px 0; font-weight:700; font-size:15.5px; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+"; font-size:20px; color:var(--accent-strong); flex:none; font-weight:400; transition:transform .15s ease;}
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{padding-bottom:16px; color:var(--text-muted); font-size:14.5px; margin:0;}
+
+  /* final cta */
+  .final-cta{text-align:center; display:flex; flex-direction:column; align-items:center; gap:16px; max-width:640px; margin:0 auto;}
+  .final-cta h2{font-size:clamp(22px,3.6vw,32px); color:#fff;}
+  .final-cta p{color:var(--on-dark-muted); font-size:16px;}
+  .final-cta .tagline{font-size:14px; color:var(--on-dark-muted); font-weight:600;}
+  .final-cta .price-now{font-size:34px; color:#fff;}
+  .final-cta .price-desc{color:var(--on-dark-muted);}
+
+  footer{background:var(--navy-deep); padding-block:34px;}
+  .footer-inner{max-width:760px; margin:0 auto; padding-inline:20px; display:flex; flex-direction:column; gap:10px; text-align:center; color:var(--on-dark-muted); font-size:12.5px;}
+  .footer-inner strong{color:#fff; font-family:"Archivo",sans-serif; font-size:13px; letter-spacing:.04em;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .thought-grid{grid-template-columns:1fr;}
+    .module-grid{grid-template-columns:1fr;}
+    .benefit-detail-grid{grid-template-columns:1fr;}
+    .bonus-grid{grid-template-columns:1fr;}
+    .plans-grid{grid-template-columns:1fr;}
+    .guarantee{flex-direction:column; text-align:center;}
+  }
+  /* upsell modal */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(8,20,24,.65); display:flex; align-items:center; justify-content:center;
+    padding:20px; z-index:100; opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .modal-overlay.open{opacity:1; pointer-events:auto;}
+  .modal-card{
+    background:#fff; border-radius:22px; max-width:460px; width:100%; padding:32px 30px; position:relative;
+    box-shadow:0 30px 70px rgba(0,0,0,.45); color:var(--text); transform:translateY(12px) scale(.98); transition:transform .2s ease;
+    max-height:88vh; overflow-y:auto;
+  }
+  .modal-overlay.open .modal-card{transform:translateY(0) scale(1);}
+  .modal-close{
+    position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; border:1px solid var(--border);
+    background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:15px; color:var(--text-muted);
+  }
+  .modal-close:hover{background:var(--bg-alt);}
+  .modal-body{display:flex; flex-direction:column; gap:14px;}
+  .modal-badge{align-self:flex-start; background:var(--coral-soft); color:var(--coral); font-size:11.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:6px 12px; border-radius:999px;}
+  .modal-body h3{font-size:21px;}
+  .modal-price-row{display:flex; align-items:baseline; gap:12px; margin-top:2px;}
+  .modal-price-old{font-size:15px; color:var(--text-muted); text-decoration:line-through; font-variant-numeric:tabular-nums;}
+  .modal-price-now{font-size:36px; font-weight:900; font-family:"Archivo",sans-serif; color:var(--accent-strong); font-variant-numeric:tabular-nums;}
+  .modal-price-now small{font-size:14px; font-weight:600; color:var(--text-muted);}
+  .modal-decline{
+    text-align:center; font-size:13px; color:var(--text-muted); text-decoration:underline; cursor:pointer;
+    background:none; border:none; padding:6px; font-family:"Public Sans",sans-serif;
+  }
+  .modal-decline:hover{color:var(--text);}
+  @media (prefers-reduced-motion:reduce){
+    .modal-overlay, .modal-card{transition:none;}
+  }
+
+  @media (max-width:520px){
+    .flow-steps{flex-direction:column; align-items:stretch;}
+    .flow-arrow{display:none;}
+  }
+</style>
+
+<header class="hero sec-dark">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow-dark">⚠️ Antes de começar seu estágio</span>
+      <h1>VOCÊ PODE SABER A MATÉRIA TODA… E AINDA ASSIM <span class="hl">TRAVAR NA HORA DO ATENDIMENTO</span></h1>
+      <p class="hero-sub">Tenha em mãos fichas, checklists, testes, escalas e guias rápidos para saber <strong>o que perguntar, o que avaliar, o que observar e o que registrar</strong> durante sua rotina de estágio.</p>
+    </div>
+
+    <div class="hero-visual">
+      <img class="hero-mockup-img" src="assets/hero-mockup.webp" width="780" height="439" alt="Mockup do SOS Estágio Fisio: livro, tablet e celular mostrando fichas, testes, goniometria e escalas" fetchpriority="high" decoding="async">
+
+      <div class="hero-highlights">
+        <p class="hh-intro"><span class="hh-icon">🎯</span> Um material completo pra chegar preparado no seu estágio, sem perder tempo caçando informação em <span class="hl">apostilas soltas, PDFs e prints desorganizados</span>.</p>
+        <ul class="hh-list">
+          <li>✅ 10 módulos completos: fichas, checklists, testes e escalas</li>
+          <li>✅ Conteúdo organizado por etapa do atendimento</li>
+          <li>✅ Material visual, objetivo e fácil de consultar</li>
+          <li>✅ 100% digital, acesso imediato e pronto pra imprimir</li>
+        </ul>
+      </div>
+
+      <a class="btn" href="#planos">QUERO MEU SOS ESTÁGIO AGORA →</a>
+      <span class="badge-strip on-dark">Acesso imediato • Material digital • Pronto para consultar</span>
+    </div>
+  </div>
+</header>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">O professor olha pra você e fala:</span>
+      <h2>“Pode começar a avaliação.”</h2>
+      <p>E aí começam os pensamentos:</p>
+    </div>
+    <div class="thought-grid narrow">
+      <div class="thought">O que eu pergunto primeiro?”</div>
+      <div class="thought">Será que estou esquecendo alguma coisa?”</div>
+      <div class="thought">Qual teste eu faço agora?”</div>
+      <div class="thought">Como eu avalio isso?”</div>
+      <div class="thought">O que eu preciso escrever na evolução?”</div>
+      <div class="thought">Como eu organizo tudo isso sem me perder?”</div>
+    </div>
+    <div class="body-copy" style="margin-top:28px;">
+      <p>Se você já passou por isso — ou sabe que vai passar — o problema não é necessariamente falta de estudo.</p>
+      <p>O problema é que <strong>estágio exige que você transforme dezenas de matérias em uma sequência prática de atendimento.</strong></p>
+    </div>
+    <div class="body-copy" style="text-align:center; align-items:center; margin-top:22px;">
+      <p>Foi justamente para facilitar esse momento que criamos o:</p>
+      <h3 style="font-size:22px;">SOS ESTÁGIO DE FISIOTERAPIA</h3>
+      <p>Uma biblioteca prática de materiais para acompanhar sua rotina de estágio e ajudar você a organizar cada etapa do atendimento.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:22px;">
+      <a class="btn" href="#planos">QUERO ACESSAR O KIT →</a>
+      <span class="microcopy">🔒 Pagamento único • Acesso imediato • Garantia</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Prévia do material</span>
+      <h2>Veja como o Kit é por dentro</h2>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="marquee-card"><img src="assets/mapa-01.webp" width="620" height="439" alt="Prévia do material — mapa 01" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-02.webp" width="620" height="439" alt="Prévia do material — mapa 02" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-03.webp" width="620" height="439" alt="Prévia do material — mapa 03" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-04.webp" width="620" height="439" alt="Prévia do material — mapa 04" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-05.webp" width="620" height="439" alt="Prévia do material — mapa 05" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-01.webp" width="620" height="439" alt="Prévia do material — mapa 01" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-02.webp" width="620" height="439" alt="Prévia do material — mapa 02" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-03.webp" width="620" height="439" alt="Prévia do material — mapa 03" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-04.webp" width="620" height="439" alt="Prévia do material — mapa 04" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-05.webp" width="620" height="439" alt="Prévia do material — mapa 05" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track reverse">
+          <div class="marquee-card"><img src="assets/mapa-06.webp" width="620" height="439" alt="Prévia do material — mapa 06" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-07.webp" width="620" height="439" alt="Prévia do material — mapa 07" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-08.webp" width="620" height="439" alt="Prévia do material — mapa 08" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-09.webp" width="620" height="439" alt="Prévia do material — mapa 09" loading="lazy" decoding="async"></div>
+          <div class="marquee-card"><img src="assets/mapa-10.webp" width="620" height="439" alt="Prévia do material — mapa 10" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-06.webp" width="620" height="439" alt="Prévia do material — mapa 06" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-07.webp" width="620" height="439" alt="Prévia do material — mapa 07" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-08.webp" width="620" height="439" alt="Prévia do material — mapa 08" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-09.webp" width="620" height="439" alt="Prévia do material — mapa 09" loading="lazy" decoding="async"></div>
+          <div class="marquee-card" aria-hidden="true"><img src="assets/mapa-10.webp" width="620" height="439" alt="Prévia do material — mapa 10" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Não é mais um PDF gigante pra você “estudar depois”</h2>
+    </div>
+    <div class="body-copy" style="text-align:center; align-items:center;">
+      <p>Você provavelmente já tem material suficiente.</p>
+    </div>
+    <div class="chip-row" style="margin:18px 0;">
+      <span class="chip">Apostilas</span><span class="chip">Slides</span><span class="chip">PDFs</span>
+      <span class="chip">Resumos</span><span class="chip">Livros</span><span class="chip">Vídeos salvos</span><span class="chip">Prints</span>
+    </div>
+    <div class="body-copy" style="text-align:center; align-items:center;">
+      <p>O problema é encontrar a informação certa <strong>quando você realmente precisa dela.</strong></p>
+      <p>Por isso, o SOS Estágio foi pensado como material de consulta.</p>
+    </div>
+    <div class="flow-steps">
+      <span class="flow-step">Você abre</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Encontra</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Consulta</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Aplica na orientação do seu estágio</span><span class="flow-arrow">→</span>
+      <span class="flow-step">Segue o atendimento</span>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Veja tudo o que você vai receber</span>
+      <h2>Os 10 módulos do SOS Estágio</h2>
+    </div>
+    <div class="module-grid">
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag1-bg);">📋</div><div><span class="module-tag" style="background:var(--tag1-bg);color:var(--tag1-fg);">MÓDULO 01</span></div></div>
+        <h3>Checklist da Primeira Avaliação</h3>
+        <p class="module-desc">Uma sequência organizada para não começar a avaliação no improviso.</p>
+        <ul class="check-list">
+          <li>Identificação do paciente e queixa principal</li>
+          <li>História da condição atual e histórico clínico</li>
+          <li>Antecedentes, medicamentos, dor e limitações</li>
+        </ul>
+        <span class="module-more">“Eu sei que preciso fazer uma anamnese… mas na hora eu esqueço metade.”</span>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag2-bg);">🧭</div><div><span class="module-tag" style="background:var(--tag2-bg);color:var(--tag2-fg);">MÓDULO 02</span></div></div>
+        <h3>Guia de Avaliação Fisioterapêutica</h3>
+        <p class="module-desc">Organize sua avaliação por etapas, com um roteiro visual pra consultar.</p>
+        <ul class="check-list">
+          <li>Inspeção, palpação e amplitude de movimento</li>
+          <li>Força muscular, dor, mobilidade e flexibilidade</li>
+          <li>Equilíbrio, coordenação e avaliação funcional</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag3-bg);">🔍</div><div><span class="module-tag" style="background:var(--tag3-bg);color:var(--tag3-fg);">MÓDULO 03</span></div></div>
+        <h3>Testes Especiais por Região</h3>
+        <p class="module-desc">Nome do teste, objetivo, execução, resultado esperado e interpretação acadêmica.</p>
+        <ul class="check-list">
+          <li>Ombro, cotovelo, punho e mão</li>
+          <li>Coluna cervical e lombar</li>
+          <li>Quadril, joelho, tornozelo e pé</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag4-bg);">📐</div><div><span class="module-tag" style="background:var(--tag4-bg);color:var(--tag4-fg);">MÓDULO 04</span></div></div>
+        <h3>Guia Prático de Goniometria</h3>
+        <p class="module-desc">Pra não esquecer exatamente onde posicionar o goniômetro.</p>
+        <ul class="check-list">
+          <li>Posicionamento, eixo, braço fixo e braço móvel</li>
+          <li>Principais movimentos</li>
+          <li>Registro da amplitude</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag5-bg);">💪</div><div><span class="module-tag" style="background:var(--tag5-bg);color:var(--tag5-fg);">MÓDULO 05</span></div></div>
+        <h3>Teste de Força Muscular</h3>
+        <p class="module-desc">Uma referência organizada, sem precisar procurar em dezenas de slides.</p>
+        <ul class="check-list">
+          <li>Escala de força e graduação</li>
+          <li>Posicionamentos, movimentos e grupos musculares</li>
+          <li>Registro dos achados</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag1-bg);">📊</div><div><span class="module-tag" style="background:var(--tag1-bg);color:var(--tag1-fg);">MÓDULO 06</span></div></div>
+        <h3>Escalas e Instrumentos de Avaliação</h3>
+        <p class="module-desc">“Qual escala eu uso?” — um dos pontos que mais confundem no estágio.</p>
+        <ul class="check-list">
+          <li>Biblioteca organizada de escalas e instrumentos</li>
+          <li>Frequentemente estudados na graduação</li>
+          <li>Separados pra facilitar consulta com supervisores</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag2-bg);">📝</div><div><span class="module-tag" style="background:var(--tag2-bg);color:var(--tag2-fg);">MÓDULO 07</span></div></div>
+        <h3>Modelos de Evolução e Registro</h3>
+        <p class="module-desc">“Como eu escrevo isso?” — um apoio pra estruturar seu raciocínio.</p>
+        <ul class="check-list">
+          <li>Informações do atendimento e achados relevantes</li>
+          <li>Procedimentos realizados e resposta observada</li>
+          <li>Objetivos acompanhados e continuidade</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag3-bg);">🗂️</div><div><span class="module-tag" style="background:var(--tag3-bg);color:var(--tag3-fg);">MÓDULO 08</span></div></div>
+        <h3>Fichas de Avaliação</h3>
+        <p class="module-desc">Modelos organizados para estudo e treinamento.</p>
+        <ul class="check-list">
+          <li>Avaliação geral e musculoesquelética</li>
+          <li>Avaliação postural e funcional</li>
+          <li>Avaliação neurológica e cardiorrespiratória</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag4-bg);">✅</div><div><span class="module-tag" style="background:var(--tag4-bg);color:var(--tag4-fg);">MÓDULO 09</span></div></div>
+        <h3>Checklist Pré-Atendimento</h3>
+        <p class="module-desc">Poucos minutos de preparação antes do paciente entrar.</p>
+        <ul class="check-list">
+          <li>O que revisar e quais materiais separar</li>
+          <li>Quais informações você precisa ter</li>
+          <li>Pontos pra não esquecer</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-top"><div class="module-icon" style="background:var(--tag5-bg);">🩺</div><div><span class="module-tag" style="background:var(--tag5-bg);color:var(--tag5-fg);">MÓDULO 10</span></div></div>
+        <h3>Casos Clínicos para Treinar Raciocínio</h3>
+        <p class="module-desc">De “eu decorei isso” pra “eu consigo organizar meu raciocínio”.</p>
+        <ul class="check-list">
+          <li>O que avaliar primeiro e o que ainda falta</li>
+          <li>Testes que podem ser discutidos</li>
+          <li>Limitações funcionais e objetivos</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Esse kit foi feito pra você que…</span>
+    </div>
+    <div class="benefit-detail-grid">
+      <div class="benefit-detail-card"><span class="check">✓</span><div><h4>Vai começar o estágio e está inseguro</h4><p>Você não quer chegar no primeiro atendimento dependendo apenas da memória.</p></div></div>
+      <div class="benefit-detail-card"><span class="check">✓</span><div><h4>Já começou o estágio e sente que se perde</h4><p>Você sabe a teoria, mas tem dificuldade em organizar a sequência.</p></div></div>
+      <div class="benefit-detail-card"><span class="check">✓</span><div><h4>Fica nervoso quando o professor pergunta algo</h4><p>Ter um material de revisão pode ajudar você a chegar mais preparado para as discussões.</p></div></div>
+      <div class="benefit-detail-card"><span class="check">✓</span><div><h4>Esquece testes, escalas e etapas da avaliação</h4><p>Em vez de procurar em cinco apostilas diferentes, tenha tudo organizado.</p></div></div>
+      <div class="benefit-detail-card" style="grid-column:1 / -1;"><span class="check">✓</span><div><h4>Quer parar de estudar de forma completamente solta</h4><p>Transforme conteúdos isolados em uma rotina mais estruturada de avaliação e revisão.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-cream">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">🎁 E ainda tem os bônus</span>
+      <h2>5 bônus que acompanham o SOS Estágio</h2>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <img class="bonus-image" src="assets/bonus-1.webp" width="480" height="360" alt="Mockup do Guia 50 Perguntas para Não Esquecer na Anamnese" loading="lazy" decoding="async">
+        <h4>Guia “50 Perguntas para Não Esquecer na Anamnese”</h4>
+        <p>Uma lista prática para revisar antes de iniciar uma avaliação.</p>
+        <div class="bonus-price"><span class="old">R$ 19,90</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-card">
+        <img class="bonus-image" src="assets/bonus-2.webp" width="480" height="360" alt="Mockup do Guia de Bolso de Goniometria" loading="lazy" decoding="async">
+        <h4>Guia de Bolso de Goniometria</h4>
+        <p>Principais movimentos organizados para consulta rápida.</p>
+        <div class="bonus-price"><span class="old">R$ 19,90</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-card">
+        <img class="bonus-image" src="assets/bonus-3.webp" width="480" height="360" alt="Mockup do material +100 Testes Especiais" loading="lazy" decoding="async">
+        <h4>+100 Testes Especiais</h4>
+        <p>Uma coleção adicional separada por região corporal.</p>
+        <div class="bonus-price"><span class="old">R$ 27,90</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-card">
+        <img class="bonus-image" src="assets/bonus-4.webp" width="480" height="360" alt="Mockup dos Modelos Editáveis de Ficha de Avaliação" loading="lazy" decoding="async">
+        <h4>Modelos Editáveis de Ficha de Avaliação</h4>
+        <p>Use como referência nos estudos e adapte conforme sua faculdade e supervisão.</p>
+        <div class="bonus-price"><span class="old">R$ 27,90</span><span class="free">GRÁTIS</span></div>
+      </div>
+      <div class="bonus-card" style="grid-column:1 / -1;">
+        <div class="bonus-top"><div class="bonus-icon">✅</div><h4>Checklist “Antes do Paciente Entrar”</h4></div>
+        <p>Uma página. Alguns minutos. Uma revisão rápida pra entrar mais organizado.</p>
+        <div class="bonus-price"><span class="old">R$ 17,90</span><span class="free">GRÁTIS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-dark">
+  <div class="container">
+    <div class="section-head">
+      <h2>Quanto vale não precisar caçar informação em 20 PDFs diferentes?</h2>
+    </div>
+    <div class="value-list">
+      <p>Se você fosse comprar separadamente: kit de avaliação, guia de testes, material de goniometria, escalas, fichas, modelos, casos clínicos…</p>
+      <p>Você poderia facilmente acumular dezenas de materiais diferentes.</p>
+      <p><strong>Aqui está tudo organizado em um único kit.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="planos" class="sec-dark" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-dark">O que dizem os estudantes</span>
+      <h2>Feito pra quem está prestes a estagiar</h2>
+    </div>
+    <div class="testi-carousel-wrap">
+      <button class="testi-nav prev" type="button" aria-label="Depoimento anterior">‹</button>
+      <div class="testi-carousel" id="testiCarousel">
+        <div class="testi-slide"><img src="assets/testi-1.webp" width="235" height="403" alt="Print de depoimento no Instagram: aluna diz que os mapas facilitam entender e lembrar na hora da avaliação" loading="lazy" decoding="async"></div>
+        <div class="testi-slide"><img src="assets/testi-2.webp" width="235" height="398" alt="Print de depoimento no Instagram: aluno diz que tirou uma das melhores notas com ajuda do material" loading="lazy" decoding="async"></div>
+        <div class="testi-slide"><img src="assets/testi-3.webp" width="232" height="401" alt="Print de depoimento no Instagram: aluna diz que os mapas ajudaram muito na prática do estágio" loading="lazy" decoding="async"></div>
+      </div>
+      <button class="testi-nav next" type="button" aria-label="Próximo depoimento">›</button>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-head">
+          <h3>Plano Básico</h3>
+          <span class="plan-sub">Biblioteca essencial do SOS Estágio</span>
+        </div>
+        <ul class="check-list">
+          <li>Os 10 módulos completos do SOS Estágio</li>
+          <li>Acesso imediato</li>
+        </ul>
+        <div class="price-block">
+          <span class="price-old">De R$ 97,00</span>
+          <span class="price-now">R$ 10<small>,00</small></span>
+          <span class="price-desc">Pagamento único. Sem mensalidade.</span>
+        </div>
+        <a id="btn-basico" class="btn btn-outline btn-block" href="#">QUERO SOMENTE O BÁSICO</a>
+        <span class="microcopy">🔒 Compra segura • Acesso digital • Garantia</span>
+      </div>
+
+      <div class="plan-card premium">
+        <span class="plan-tag">🔥 Mais escolhido</span>
+        <div class="plan-head">
+          <span class="stars">★★★★★</span>
+          <h3>Plano Premium</h3>
+          <span class="plan-sub">SOS Estágio completo + 5 bônus</span>
+        </div>
+        <ul class="check-list">
+          <li>Os 10 módulos completos do SOS Estágio</li>
+          <li>Checklists, fichas, testes, escalas e guias</li>
+          <li>PDF digital pronto para consultar e imprimir</li>
+          <li>Acesso imediato</li>
+          <li>Bônus 1 — 50 Perguntas para a Anamnese</li>
+          <li>Bônus 2 — Guia de Bolso de Goniometria</li>
+          <li>Bônus 3 — +100 Testes Especiais</li>
+          <li>Bônus 4 — Modelos Editáveis de Ficha</li>
+          <li>Bônus 5 — Checklist Antes do Paciente Entrar</li>
+        </ul>
+        <div class="price-block">
+          <span class="price-old">De R$ 197,00</span>
+          <span class="price-now">R$ 27<small>,90</small></span>
+          <span class="price-desc">Pagamento único. Sem mensalidade.</span>
+        </div>
+        <a class="btn btn-block" href="#">🔥 QUERO O PLANO PREMIUM</a>
+        <span class="microcopy">🔒 Compra segura • Acesso digital • Garantia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="body-copy" style="text-align:center; align-items:center;">
+      <p class="lead">Pense no que normalmente acontece</p>
+      <p>Você passa semanas estudando uma matéria. Chega no estágio. O paciente senta na sua frente. E de repente parece que metade do conteúdo desapareceu da sua cabeça.</p>
+      <p>Isso acontece porque <strong>saber um conteúdo e recuperar esse conteúdo rapidamente são coisas diferentes.</strong></p>
+      <p>O SOS Estágio não promete transformar ninguém em profissional da noite para o dia.</p>
+      <p>Ele faz algo mais simples:</p>
+    </div>
+    <p class="callout-strong" style="margin:14px 0;">ORGANIZA O QUE VOCÊ PRECISA CONSULTAR.</p>
+    <div class="body-copy" style="text-align:center; align-items:center;">
+      <p>Para você não depender exclusivamente da memória em momentos importantes da sua formação.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Antes de comprar</span>
+      <h2>Perguntas que todo estagiário se faz</h2>
+    </div>
+    <div class="objection-grid">
+      <div class="objection-card">
+        <h3>“Mas eu já tenho material da faculdade”</h3>
+        <p>Provavelmente tem. E deveria continuar usando. O SOS Estágio não foi criado para substituir aulas, livros ou supervisão. Ele foi criado porque normalmente o conteúdo está espalhado em slide 1, PDF 2, grupo da turma, Drive, caderno, print, vídeo salvo — e quando você precisa consultar alguma coisa rapidamente, não encontra. O SOS Estágio reúne materiais práticos em uma estrutura única para facilitar sua revisão.</p>
+      </div>
+      <div class="objection-card">
+        <h3>“Sou dos primeiros semestres. Serve?”</h3>
+        <p>Se você ainda está longe do estágio, o kit pode funcionar como preparação. Se já está entrando no estágio, a utilidade tende a ser mais imediata. Se já está estagiando, pode utilizar os materiais para revisão e consulta acadêmica conforme as regras da sua instituição.</p>
+      </div>
+      <div class="objection-card">
+        <h3>“Posso usar durante o atendimento?”</h3>
+        <p>O material é educacional e complementar. O uso dentro do estágio deve seguir as regras da sua instituição, orientação dos professores, supervisores e protocolos aplicáveis. Ele não substitui avaliação profissional, protocolos oficiais ou supervisão clínica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="guarantee">
+      <div class="guarantee-badge">7<span>DIAS</span></div>
+      <div class="guarantee-copy">
+        <h3>Você pode abrir o material e decidir com calma</h3>
+        <p>Depois da compra, acesse o SOS Estágio. Veja as fichas. Confira os checklists. Abra os guias. Analise os bônus. Você tem 7 dias corridos para decidir — se o material não fizer sentido para você, solicite o reembolso conforme as regras apresentadas na compra, sem transformar uma compra de baixo valor em uma decisão complicada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Como recebo o SOS Estágio?</summary>
+        <p>O acesso é digital e as instruções são disponibilizadas após a confirmação do pagamento.</p>
+      </details>
+      <details>
+        <summary>O material é físico?</summary>
+        <p>Não. O conteúdo é digital.</p>
+      </details>
+      <details>
+        <summary>Posso acessar pelo celular?</summary>
+        <p>Sim, desde que seu dispositivo seja compatível com os formatos disponibilizados.</p>
+      </details>
+      <details>
+        <summary>Posso imprimir?</summary>
+        <p>Os materiais preparados para impressão podem ser impressos para uso pessoal.</p>
+      </details>
+      <details>
+        <summary>Serve para qualquer estágio?</summary>
+        <p>O kit reúne conteúdos gerais de apoio à formação em Fisioterapia. As exigências podem variar conforme área, instituição, professor, serviço e protocolo.</p>
+      </details>
+      <details>
+        <summary>Substitui livros e aulas?</summary>
+        <p>Não. É um material complementar.</p>
+      </details>
+      <details>
+        <summary>Substitui meu supervisor?</summary>
+        <p>Não.</p>
+      </details>
+      <details>
+        <summary>Posso utilizar as fichas exatamente como estão?</summary>
+        <p>Use os modelos como material educacional e adapte-os conforme as orientações da sua faculdade, supervisão e local de estágio.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec-dark">
+  <div class="container final-cta">
+    <h2>Se você vai passar horas no estágio, não faz sentido passar mais horas procurando o que precisa em material desorganizado.</h2>
+    <p>Tenha suas principais referências acadêmicas reunidas em um só lugar. Para revisar. Consultar. Treinar. E chegar aos seus atendimentos com uma estrutura muito mais organizada.</p>
+    <h3 style="font-size:20px; margin-top:8px; color:#fff;">SOS ESTÁGIO DE FISIOTERAPIA</h3>
+    <span class="tagline">Fichas + Checklists + Testes + Escalas + Guias + Casos Clínicos</span>
+    <span class="price-now">R$ 27<small>,90</small></span>
+    <span class="price-desc">Pagamento único.</span>
+    <a class="btn" href="#planos">🔥 QUERO MEU SOS ESTÁGIO AGORA →</a>
+    <span class="microcopy">Acesso imediato após confirmação do pagamento.</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <strong>MATERIAL EDUCACIONAL COMPLEMENTAR</strong>
+    <span>Este material possui finalidade exclusivamente educacional e de apoio aos estudos. Não substitui livros-texto, aulas, supervisão acadêmica, avaliação profissional, protocolos institucionais ou diretrizes clínicas oficiais.</span>
+    <span>Durante atividades práticas e atendimentos, siga sempre as orientações da sua instituição de ensino, serviço de saúde e profissional responsável pela supervisão.</span>
+    <span style="margin-top:8px;">SOS Estágio Fisio © 2026</span>
+  </div>
+</footer>
+
+<div id="upsellModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button id="modalClose" class="modal-close" aria-label="Fechar">✕</button>
+    <div class="modal-body">
+      <span class="modal-badge">⚡ Espera, oferta especial</span>
+      <h3 id="modalTitle">Antes de levar só o Básico…</h3>
+      <p class="muted" style="font-size:14.5px;">Por muito pouco a mais, você leva o SOS Estágio completo com os 5 bônus exclusivos — condição só nesta tela.</p>
+      <ul class="check-list">
+        <li>Tudo do Plano Básico (os 10 módulos completos)</li>
+        <li>Bônus 1 — 50 Perguntas para a Anamnese</li>
+        <li>Bônus 2 — Guia de Bolso de Goniometria</li>
+        <li>Bônus 3 — +100 Testes Especiais</li>
+        <li>Bônus 4 — Modelos Editáveis de Ficha</li>
+        <li>Bônus 5 — Checklist Antes do Paciente Entrar</li>
+      </ul>
+      <div class="modal-price-row">
+        <span class="modal-price-old">De R$ 27,90</span>
+        <span class="modal-price-now">R$ 19<small>,90</small></span>
+      </div>
+      <span class="microcopy" style="justify-content:flex-start;">🔒 Condição exclusiva desta tela • Pagamento único</span>
+      <a class="btn btn-block" href="#">🔥 QUERO O PLANO COMPLETO POR R$ 19,90 →</a>
+      <button id="modalDecline" class="modal-decline">Não, quero continuar só com o Básico por R$ 10,00</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('upsellModal');
+  var openBtn = document.getElementById('btn-basico');
+  var closeBtn = document.getElementById('modalClose');
+  var declineBtn = document.getElementById('modalDecline');
+
+  function openModal(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(openBtn) openBtn.focus();
+  }
+
+  if(openBtn) openBtn.addEventListener('click', openModal);
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  if(declineBtn) declineBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+})();
+
+(function(){
+  var track = document.getElementById('testiCarousel');
+  if(!track) return;
+  var prevBtn = document.querySelector('.testi-nav.prev');
+  var nextBtn = document.querySelector('.testi-nav.next');
+  function scrollByCard(dir){
+    var slide = track.querySelector('.testi-slide');
+    var step = slide ? slide.getBoundingClientRect().width + 18 : 260;
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+  if(prevBtn) prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ scrollByCard(1); });
+})();
+</script>
