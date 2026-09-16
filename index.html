@@ -310,7 +310,17 @@
     .flow-steps{flex-direction:column; align-items:stretch;}
     .flow-arrow{display:none;}
   }
+
+  .urgency-bar{
+    background:#e0142c; color:#fff; text-align:center; padding:11px 16px;
+    font-size:13.5px; font-weight:700; letter-spacing:.01em; line-height:1.4;
+  }
+  .urgency-bar span{white-space:nowrap;}
+  .urgency-bar strong{font-variant-numeric:tabular-nums; font-family:"Archivo",sans-serif;}
+  @media (max-width:420px){ .urgency-bar{font-size:12.5px; padding:10px 12px;} }
 </style>
+
+<div class="urgency-bar">⏰ <span>Oferta por tempo limitado — válida só até <strong>23:59</strong> de hoje!</span> Faltam <strong id="urgencyTimer">--:--:--</strong></div>
 
 <header class="hero sec-dark">
   <div class="container hero-grid">
@@ -875,5 +885,22 @@
   }
   if(prevBtn) prevBtn.addEventListener('click', function(){ scrollByCard(-1); });
   if(nextBtn) nextBtn.addEventListener('click', function(){ scrollByCard(1); });
+})();
+
+(function(){
+  var el = document.getElementById('urgencyTimer');
+  if(!el) return;
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function update(){
+    var now = new Date();
+    var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    var diff = Math.max(0, end - now);
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+  update();
+  setInterval(update, 1000);
 })();
 </script>
