@@ -98,8 +98,6 @@
   .btn-block{width:100%;}
   .microcopy{font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:6px; justify-content:center; flex-wrap:wrap;}
   .sec-dark .microcopy{color:var(--on-dark-muted);}
-  .badge-strip{font-size:12.5px; font-weight:800; letter-spacing:.06em; color:var(--accent-strong); background:var(--accent-soft); padding:9px 16px; border-radius:10px; text-transform:uppercase;}
-  .badge-strip.on-dark{color:#fff; background:rgba(255,255,255,.12);}
 
   /* check lists */
   .check-list{display:flex; flex-direction:column; gap:10px; padding:0; margin:0;}
@@ -115,20 +113,12 @@
   /* hero */
   .hero{padding-block:clamp(44px,7vw,72px) clamp(50px,8vw,88px);}
   .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
-  .hero-copy{display:flex; flex-direction:column; gap:18px; align-items:flex-start; min-width:0;}
+  .hero-copy{display:flex; flex-direction:column; gap:22px; align-items:flex-start; min-width:0;}
   .hero h1{font-size:clamp(26px,4.2vw,42px); letter-spacing:-.01em; color:#fff;}
-  .hero h1 .hl{color:var(--star);}
-  .hero-sub{font-size:17px; color:var(--on-dark-muted); max-width:54ch;}
-  .hero-sub strong{color:#fff;}
-  .hl{color:var(--star);}
-
-  .hero-highlights{display:flex; flex-direction:column; gap:14px; width:100%; max-width:380px;}
-  .hh-intro{font-size:13px; font-weight:700; color:#fff; line-height:1.5;}
-  .hh-icon{font-size:15px; margin-right:4px; vertical-align:-2px;}
-  .hh-list{display:flex; flex-direction:column; gap:9px; padding:0; margin:0;}
+  .hh-list{display:flex; flex-direction:column; gap:12px; padding:0; margin:0;}
   .hh-list li{list-style:none; font-size:13px; font-weight:700; color:#fff; display:flex; gap:8px; align-items:flex-start; line-height:1.4;}
 
-  .hero-visual{position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; min-height:340px; min-width:0;}
+  .hero-visual{display:flex; align-items:center; justify-content:center; min-width:0;}
   .hero-mockup-img{width:100%; max-width:520px; min-width:0; height:auto; aspect-ratio:780/439; border-radius:18px; box-shadow:var(--shadow-dark); display:block;}
 
   /* thought bubbles */
@@ -268,6 +258,9 @@
 
   @media (max-width:860px){
     .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .hero-copy{width:100%;}
+    .hero-copy .btn{width:100%; justify-content:center;}
     .thought-grid{grid-template-columns:1fr;}
     .module-grid{grid-template-columns:1fr;}
     .benefit-detail-grid{grid-template-columns:1fr;}
@@ -327,26 +320,18 @@
 <header class="hero sec-dark">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow-dark">⚠️ Antes de começar seu estágio</span>
-      <h1>VOCÊ PODE SABER A MATÉRIA TODA… E AINDA ASSIM <span class="hl">TRAVAR NA HORA DO ATENDIMENTO</span></h1>
-      <p class="hero-sub">Tenha em mãos fichas, checklists, testes, escalas e guias rápidos para saber <strong>o que perguntar, o que avaliar, o que observar e o que registrar</strong> durante sua rotina de estágio.</p>
+      <h1>🎯 Chegue no estágio preparado — sem perder horas procurando material solto.</h1>
+      <ul class="hh-list">
+        <li>✅ 10 módulos prontos para consulta</li>
+        <li>✅ Fichas, checklists, testes e escalas</li>
+        <li>✅ Acesso imediato + pronto para imprimir</li>
+      </ul>
+      <a class="btn" href="#planos">QUERO MEU SOS ESTÁGIO AGORA →</a>
+      <span class="microcopy" style="justify-content:flex-start;">🔒 Acesso imediato • 100% digital</span>
     </div>
 
     <div class="hero-visual">
       <img class="hero-mockup-img" src="assets/hero-mockup.webp" width="780" height="439" alt="Mockup do SOS Estágio Fisio: livro, tablet e celular mostrando fichas, testes, goniometria e escalas" fetchpriority="high" decoding="async">
-
-      <div class="hero-highlights">
-        <p class="hh-intro"><span class="hh-icon">🎯</span> Um material completo pra chegar preparado no seu estágio, sem perder tempo caçando informação em <span class="hl">apostilas soltas, PDFs e prints desorganizados</span>.</p>
-        <ul class="hh-list">
-          <li>✅ 10 módulos completos: fichas, checklists, testes e escalas</li>
-          <li>✅ Conteúdo organizado por etapa do atendimento</li>
-          <li>✅ Material visual, objetivo e fácil de consultar</li>
-          <li>✅ 100% digital, acesso imediato e pronto pra imprimir</li>
-        </ul>
-      </div>
-
-      <a class="btn" href="#planos">QUERO MEU SOS ESTÁGIO AGORA →</a>
-      <span class="badge-strip on-dark">Acesso imediato • Material digital • Pronto para consultar</span>
     </div>
   </div>
 </header>
